@@ -30,7 +30,8 @@ void swap(int* a, int* b) {
 
 // 使用快速排序算法排序数组
 void quickSort(int arr[], int low, int high) {
-    if (low < high) {
+    
+    while (low < high) {
         int pivot = arr[low];
         int left = low;
         int right = high;
@@ -49,9 +50,11 @@ void quickSort(int arr[], int low, int high) {
                 right--;
             }
         }    
-        
-        quickSort(arr, low, right);
-        quickSort(arr, left, high);
+        // printf("low%d high%d left%d right%d \n",low ,high ,left ,right);
+        if (low < right) {
+            quickSort(arr, low, right);
+        }
+        low = left;
     }
 }
 
